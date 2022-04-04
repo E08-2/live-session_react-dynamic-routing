@@ -47,23 +47,35 @@ const App = () => {
                         {/* <Route path="/" exact>
                             <Home />
                         </Route> */}
+
                         <Route path="/" exact component={Home} />
 
-                        <Route path="/vocals" component={Ozzy} />
+                        <Route path="/vocals" exact component={Ozzy} />
 
-                        <Route path="/guitar" component={Tony} />
+                        <Route path="/guitar" exact component={Tony} />
 
-                        <Route path="/bass" component={Geezer} />
+                        <Route path="/bass" exact component={Geezer} />
 
-                        <Route path="/drums" component={Bill} />
+                        <Route path="/drums" exact component={Bill} />
 
                         {/* // ? Update 3B: Dynamic routing components */}
                         {/* Route 6: Make a route to a view which renders a list of albums */}
                         <Route path="/albums" exact component={Albums} />
 
                         {/* Route 7: Make a route to show the details of a specific album */}
-                        <Route path="/albums/new-album" component={CurrentAlbum} />
                         
+                        {/* 
+                        // * Goal: Make a route to a specific album when the user clicks that album's link in the "Albums" component
+                        // * "Whichever album you click on, show details of that album!"
+
+                        NOTE: now we are using an unknown ":id" parameter in the path.
+                        The app doesn't know in advance how many albums will be "fetched" from the server...
+                        ... or what the user will click on!
+                        A parameter lets the app handle the links in the "Albums" component DYNAMICALLY
+                        AFTER the user clicks a link, find out the path, and THEN render the correct content
+                        */}
+                        <Route path="/albums/new-album/:id" component={CurrentAlbum} />
+                    
                         {/* // ? Update 2: Change Redirect to a Not Found Component using a wildcard (*) path */}
                         {/* <Redirect to="/" /> */}
 

@@ -35,10 +35,11 @@ const Albums = () => {
     return (
         <ul>
             { 
+                // Now when we click a link, we go to the path "/albums/new-album/" PLUS the id of the album whose link we clicked!
                 albums.map(albumObj => {
                     return (
                         <li>
-                            <Link to="/albums/new-album">{albumObj.title} ({albumObj.year})</Link>
+                            <Link to={`/albums/new-album/${albumObj.id}`}>{albumObj.title} ({albumObj.year})</Link>
                         </li>
                     );
                 })
